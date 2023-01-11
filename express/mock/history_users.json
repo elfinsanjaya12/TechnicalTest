@@ -1,0 +1,32 @@
+[
+  {
+    "_id": {
+      "$oid": "63be52ce873cd15c15155622"
+    },
+    "userId": {
+      "$oid": "60acf086e2e33c145dff9e65"
+    },
+    "timestampLogin": {
+      "$date": {
+        "$numberLong": "1673417422811"
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1673417422816"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1673418451217"
+      }
+    },
+    "__v": 0,
+    "durationTime": "00:17",
+    "timestampLogout": {
+      "$date": {
+        "$numberLong": "1673418451216"
+      }
+    }
+  }
+]
