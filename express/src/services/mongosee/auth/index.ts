@@ -6,6 +6,7 @@ import { BadRequestError } from '../../../errors/bad-request-error';
 import { PasswordCompare } from '../password';
 import { generateAccessToken } from '../../jwt';
 import { LoginResponse } from './interfaces/auth.response';
+import { convertMsToHM } from '../../../utils/convertMsToHM';
 
 export const authLogin = async (req: Request) => {
   const { email, password }: LoginDTO = req.body;
@@ -36,4 +37,28 @@ export const authLogin = async (req: Request) => {
   };
 
   return response;
+};
+
+export const authLogout = async (req: Request) => {
+  const findUser = await User.findOne({ _id: req.currentUser!.userId });
+
+  if (!findUser) throw new BadRequestError('USER_ID_NOT_FOUND');
+
+  const findHistoryUser = await HistoryUser.findOne({
+    _id: req.currentUser!.historyUserId,
+    userId: req.currentUser!.userId,
+  });
+
+  if (!findHistoryUser) throw new BadRequestError('HISTORY_USER_ID_NOT_FOUND');
+
+  findHistoryUser.timestampLogout = new Date();
+
+  findHistoryUser.durationTime = convertMsToHM(
+    findHistoryUser.timestampLogout.getTime() -
+      findHistoryUser.timestampLogin.getTime()
+  );
+
+  await findHistoryUser.save();
+
+  return { data: findHistoryUser };
 };

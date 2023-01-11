@@ -15,7 +15,7 @@ interface HistoryUserDoc extends mongoose.Document {
   userId: string;
   timestampLogin: Date;
   timestampLogout: Date;
-  durationTime: string;
+  durationTime: string | number;
 }
 
 const HistoryUserSchema = new mongoose.Schema(
