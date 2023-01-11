@@ -8,15 +8,9 @@ import mongoose from 'mongoose';
 import { errorHandler } from './middlewares/error-handler';
 import { appRouter } from './api/routes';
 
+dotenv.config();
 const app: Express = express();
 const port: string = process.env.PORT ?? '3000';
-
-dotenv.config();
-
-mongoose.set('strictQuery', false);
-mongoose.connect(`${process.env.MONGO_URL}`, () => {
-  console.log('connected to database');
-});
 
 app.use(cors());
 app.use(helmet());
@@ -38,6 +32,11 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 const server = async () => {
+  mongoose.set('strictQuery', false);
+  mongoose.connect(`${process.env.MONGO_URL}`, () => {
+    console.log('connected to database');
+  });
+
   app.listen(port, () => console.log(`listening on port ${port}`));
 };
 

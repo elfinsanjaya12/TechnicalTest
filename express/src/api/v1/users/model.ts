@@ -44,13 +44,11 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.methods.comparePassword = async function (
-  canditatePassword: string
-) {
-  const isMatch = await bcrypt.compare(canditatePassword, this.password);
-  return isMatch;
-};
-
 const User = mongoose.model<UserDoc, UserModelInterface>('User', userSchema);
+
+User.build({
+  email: 'some email',
+  password: 'some password',
+});
 
 export { User };

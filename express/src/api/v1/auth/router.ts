@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { signIn } from './controller';
+import { login } from './controller';
 
 const router = Router();
-router.post('/', signIn);
+router.post('/', login);
 
 export { router as cmsAuthRouter };
