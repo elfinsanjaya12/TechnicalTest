@@ -1,0 +1,11 @@
+.denominator {
+  text-align: right;
+  background-color: transparent;
+  color: white;
+  border: 0px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(90deg, #06beb6, #48b1bf 100%);
+}

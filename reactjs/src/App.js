@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Buttons from './components/button';
 import Display from './components/display';
 import { round, evaluate } from 'mathjs';
 import Form from './components/form';
+import { getData } from './utils/fetch';
 export default function App() {
   const [input, setInput] = useState('');
   const [answer, setAnswer] = useState('');
+  const [isLogin, setIsLogin] = useState(false);
 
   const inputHandler = (event) => {
     if (answer === 'Invalid Input!!') return;
@@ -128,19 +130,35 @@ export default function App() {
     }
   };
 
+  const logout = async () => {
+    await getData('/api/v1/auth/logout');
+    setIsLogin(false);
+    window.localStorage.clear();
+  };
+
+  useEffect(() => {
+    setIsLogin(localStorage.getItem('accessToken') ? true : false);
+  }, [isLogin]);
+
   return (
-    <div className='container'>
-      <div className='main'>
-        <Form />
-        <Display input={input} setInput={setInput} answer={answer} />
-        <Buttons
-          inputHandler={inputHandler}
-          clearInput={clearInput}
-          backspace={backspace}
-          changePlusMinus={changePlusMinus}
-          calculateAns={calculateAns}
-        />
+    <>
+      <div className='container'>
+        {!isLogin ? (
+          <Form setIsLogin={setIsLogin} />
+        ) : (
+          <div className='main'>
+            <button onClick={logout}>Logout</button>
+            <Display input={input} setInput={setInput} answer={answer} />
+            <Buttons
+              inputHandler={inputHandler}
+              clearInput={clearInput}
+              backspace={backspace}
+              changePlusMinus={changePlusMinus}
+              calculateAns={calculateAns}
+            />
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 }

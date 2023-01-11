@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css';
-// import CALCULATOR_BUTTONS from "./CalculatorButtons";
 
 const Buttons = ({
   inputHandler,
