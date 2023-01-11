@@ -1,5 +1,13 @@
-- Proses pemberian tes teknikal. Kami akan memberikan tes teknikal yang harus dikerjakan dan dikumpulkan maksimal dalam waktu 3 hari kerja terhitung dari email ini dikirimkan. Detail mengenai tes akan disertakan dalam attachment email ini. Jika sudah selesai dapat langsung me-reply email ini dengan repository Git yang berisi hasil tes tersebut.
+## Technical Test
 
-- Jika tes teknikal lolos, maka kami akan mengundang Saudara untuk melakukan interview dengan kami. Proses interview akan berlangsung beberapa kali termasuk proses negosiasi payment Saudara. Semua peraturan dan cara kerja akan dijelaskan pada interview pertama setelah selesai mengerjakan tes teknikal.
+1. Buatlah sebuah aplikasi kalkulator menggunakan MERN STACK dengan kriteria berikut:
+   a. Fitur login dan logout, dimana timestampnya di record (disimpan pada DB, prefer mongodb)
+   b. Fitur kalkulator sederhana
+   i. Ada fitur penjumlahan, pengurangan, pembagian dan perkalian
+   ii. Ada fitur pembilang dalam Bahasa Indonesia. Contoh: ketika hasilnya adalah angka 11,
+   maka ketika fitur tersebut diaktifkan (dapat berupa tombol sederhana), maka akan
+   keluar tulisan “Sebelas”.
 
-- Jika Saudara diterima, maka kami akan mengundang Saudara ke kantor (PT. LNK) untuk menandatangani perjanjian kerja dan juga akan saya perkenalkan dengan anggota tim dan tim lead Saudara, jika tidak memungkinkan hadir ke kantor dikarenakan jarak tempuh kami akan mengirimkan perjanjian melalui pos.
+2. Buatlah grafik lama pengunjung mengakses fitur kalkulator dari data Point 1 dengan
+   menggunakan framework Laravel.
+   a. Lama pengunjung (timestamp logout –timestamp login)
