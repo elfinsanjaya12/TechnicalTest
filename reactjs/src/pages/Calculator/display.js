@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import Denominator from '../denominator';
+import Denominator from './denominator';
 
 const Display = ({ input, setInput, answer }) => {
   const onChangeTagInput = (e) => {
