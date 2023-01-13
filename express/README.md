@@ -1,8 +1,16 @@
 ## Daftar Isi
 
 - [Daftar Isi](#daftar-isi)
+- [Using Technology](using-technology)
 - [Rancangan Database Prototype](#rancangan)
 - [Daftar API ENDPOINT](#daftar-api-endpoint)
+
+## using technology
+
+- Express JS
+- MongoDB
+- Mongoose
+- Typescript
 
 # Rancangan
 
