@@ -33,7 +33,7 @@ const HistoryUserSchema = new mongoose.Schema(
       type: Date,
     },
     durationTime: {
-      type: String,
+      type: Number,
     },
   },
   { timestamps: true }

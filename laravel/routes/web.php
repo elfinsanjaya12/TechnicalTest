@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HisotryUsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+    
+
+//     $books = Book::all();
+//     $data['chart_data'] = json_encode($books);
+
+//     return view('welcome', $data);
+// });
+
+
+Route::resource('/', HisotryUsersController::class)->names('books');

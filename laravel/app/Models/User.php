@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    use HasFactory;
+    protected $connection = 'mongodb';
+    protected $collection = 'users';
+    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +27,11 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    public function parent()
+    {
+        return $this->belongsTo(Tes::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

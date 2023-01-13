@@ -6,7 +6,6 @@ import { BadRequestError } from '../../../errors/bad-request-error';
 import { PasswordCompare } from '../password';
 import { generateAccessToken } from '../../jwt';
 import { LoginResponse } from './interfaces/auth.response';
-import { convertMsToHM } from '../../../utils/convertMsToHM';
 
 export const authLogin = async (req: Request) => {
   const { email, password }: LoginDTO = req.body;
@@ -53,11 +52,13 @@ export const authLogout = async (req: Request) => {
 
   findHistoryUser.timestampLogout = new Date();
 
-  findHistoryUser.durationTime = convertMsToHM(
+  let diff: number =
     findHistoryUser.timestampLogout.getTime() -
-      findHistoryUser.timestampLogin.getTime()
-  );
+    findHistoryUser.timestampLogin.getTime();
 
+  const minutes: number = Math.floor(diff / 60000);
+
+  findHistoryUser.durationTime = minutes;
   await findHistoryUser.save();
 
   return { data: findHistoryUser };
